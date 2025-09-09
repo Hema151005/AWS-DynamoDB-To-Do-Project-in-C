@@ -1,0 +1,50 @@
+	#include <aws/common/common.h>
+#include <aws/io/io.h>
+#include <aws/auth/credentials.h>
+#include <aws/auth/signing.h>
+#include <aws/http/http.h>
+#include <aws/http/request_response.h>
+#include <aws/common/byte_buf.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// DynamoDB endpoint
+#define DYNAMODB_ENDPOINT "https://dynamodb.us-east-1.amazonaws.com"
+
+int main() {
+    // Initialize AWS SDK
+    struct aws_allocator *allocator = aws_default_allocator();
+    aws_common_library_init(allocator);
+    aws_io_library_init(allocator);
+    aws_auth_library_init(allocator);
+    aws_http_library_init(allocator);
+
+    printf("🚀 AWS DynamoDB To-Do Project in C\n");
+
+    // Sample JSON payload for DynamoDB "PutItem"
+    const char *json_payload =
+        "{"
+        "\"TableName\": \"Todos\","
+        "\"Item\": {"
+        "\"id\": {\"S\": \"101\"},"
+        "\"task\": {\"S\": \"Complete AWS Project in C\"}"
+        "}"
+        "}";
+
+    printf("Sending payload to DynamoDB:\n%s\n", json_payload);
+
+    // NOTE: Actual AWS request signing (SigV4) and sending requires
+    // AWS auth setup with aws-c-auth and aws-c-http.
+    // For simplicity, we just print payload here.
+
+    printf("✅ Task added successfully (simulation).\n");
+
+    // Cleanup AWS SDK
+    aws_http_library_clean_up();
+    aws_auth_library_clean_up();
+    aws_io_library_clean_up();
+    aws_common_library_clean_up();
+
+    return 0;
+}
