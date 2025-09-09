@@ -4,12 +4,6 @@ This is a simple **AWS DynamoDB To-Do project** written in **C**. It demonstrate
 
 > 🚀 This project is a simulation and does not perform actual API requests. It’s designed for learning purposes and understanding AWS SDK usage in C.
 
-## 📂 Project Structure
-
-AwsDynamoTodo/
-├── main.c
-└── README.md
-
 
 ## 🔧 Prerequisites
 
